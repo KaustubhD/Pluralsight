@@ -13,3 +13,6 @@ div.card {
 .table {
   margin-top: 10px
 }
+button.toggleImage{
+  width: 150px;
+}
