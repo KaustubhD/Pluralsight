@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit{
   }
   set filterString(val: string){
     this._filterString = val;
-    this.filteredProducts = this._filterString ? this.filterProds(this._filterString) : this.products;
+    this.filteredProducts = this.filterString ? this.filterProds(this.filterString) : this.products;
   }
   filteredProducts: IProducts[];
   products: IProducts[] = [
