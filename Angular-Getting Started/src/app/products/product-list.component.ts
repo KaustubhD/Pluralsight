@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { IProducts } from "./products";
+import { ProductListService } from "./product-list.service";
 
 @Component({
   selector: 'pm-products',
@@ -13,40 +14,27 @@ export class ProductListComponent implements OnInit{
   Imagemargin: number = 2;
   showImage: boolean = false;
   _filterString: string;
+
+
+  // private _productListService;
+  // constructor(productService: ProductListService){
+  //   this._productListService = productService;
+  // }
+  // -------- Same code ---------
+  // constructor(private productService: ProductListService){}
+
+  constructor(private productService: ProductListService){
+    // this._filterString = 'hello'
+  }
   get filterString(): string{
-    return this._filterString; 
+    return this._filterString
   }
   set filterString(val: string){
-    this._filterString = val;
-    this.filteredProducts = this.filterString ? this.filterProds(this.filterString) : this.products;
+    this._filterString = val
+    this.filteredProducts = this.filterString ? this.filterProds(this.filterString) : this.products
   }
-  filteredProducts: IProducts[];
-  products: IProducts[] = [
-    {
-      "productId": 5,
-      "productName": "Hammer",
-      "productCode": "TBX-0048",
-      "releaseDate": "May 21, 2016",
-      "description": "Curved claw steel hammer",
-      "price": 8.9,
-      "starRating": 4.8,
-      "imageUrl": "https://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
-    },
-    {
-      "productId": 8,
-      "productName": "Saw",
-      "productCode": "TBX-0022",
-      "releaseDate": "May 15, 2016",
-      "description": "15-inch steel blade hand saw",
-      "price": 11.55,
-      "starRating": 3.7,
-      "imageUrl": "https://openclipart.org/image/300px/svg_to_png/27070/egore911_saw.png"
-    }
-  ];
-  constructor(){
-    this.filteredProducts = this.products;
-    this._filterString = 'hello';
-  }
+  filteredProducts: IProducts[]
+  products: IProducts[] = []
   onRatingClicked(message: string): void{
     this.pageTitle = 'Product List ' + message
   }
@@ -59,5 +47,7 @@ export class ProductListComponent implements OnInit{
   }
   ngOnInit(): void{
     console.log('Init done')
+    this.products = this.productService.getProducts()
+    this.filteredProducts = this.products
   }
 }
