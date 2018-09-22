@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProducts } from './products';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductListService } from './product-list.service';
 
 @Component({
   templateUrl: './product-detail.component.html',
@@ -9,9 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProductDetailComponent implements OnInit {
 
   pageTitle: string = 'Product Detail'
-  product: IProducts
-
-  constructor(private route: ActivatedRoute, private router: Router) {
+  product: IProducts | undefined
+  errorMessage: ''
+  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductListService) {
     
   }
 
@@ -29,8 +30,16 @@ export class ProductDetailComponent implements OnInit {
         "imageUrl": "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
     }
   }
+
   onBack(){
     this.router.navigate(['/products'])
+  }
+
+  getProduct(id: number){
+    this.productService.getProduct(id).subscribe(
+      prod => this.product = prod,
+      error => this.errorMessage = error
+    )
   }
 
 }
