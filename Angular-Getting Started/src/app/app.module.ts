@@ -7,6 +7,7 @@ import { ProductListComponent } from './products/product-list.component';
 import { AddSpaces } from './shared/addSpaces.pipe';
 import { StarComponent } from './shared/star.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductDetailComponent } from './products/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProductListComponent,
     AddSpaces,
     StarComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,
