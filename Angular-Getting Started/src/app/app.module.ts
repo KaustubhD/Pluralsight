@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component';
 import { AddSpaces } from './shared/addSpaces.pipe';
 import { StarComponent } from './shared/star.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     AddSpaces,
-    StarComponent
+    StarComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
