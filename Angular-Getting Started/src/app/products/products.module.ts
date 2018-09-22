@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
 import { ProductListComponent } from './product-list.component';
 import { ProductDetailComponent } from './product-detail.component';
 import { AddSpaces } from '../shared/addSpaces.pipe';
 import { ProductDetailGuard } from './product-detail.guard';
-// import { SharedModule } from '../shared/shared.module';
+import { StarComponent } from '../shared/star.component';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -17,12 +19,14 @@ import { ProductDetailGuard } from './product-detail.guard';
         component: ProductDetailComponent
       },
     ]),
+    // CommonModule,
+    // FormsModule,
+    SharedModule,
     // SharedModule
   ],
   declarations: [
     ProductListComponent,
     ProductDetailComponent,
-    AddSpaces
   ]
 })
 export class ProductModule { }
